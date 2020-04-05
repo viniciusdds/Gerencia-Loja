@@ -1,21 +1,15 @@
-<<<<<<< HEAD
 import 'package:flutter/material.dart';
-=======
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:gerente_loja/blocs/user_bloc.dart';
->>>>>>> segunda commit
 import 'package:gerente_loja/widgets/user_tile.dart';
 
 class UsersTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-=======
 
     final _userBloc = BlocProvider.getBloc<UserBloc>();
 
->>>>>>> segunda commit
     return Column(
       children: <Widget>[
         Padding(
@@ -28,19 +22,10 @@ class UsersTab extends StatelessWidget {
               icon: Icon(Icons.search, color: Colors.white,),
               border: InputBorder.none
             ),
+            onChanged: _userBloc.onChangedSearch,
           ),
         ),
         Expanded(
-<<<<<<< HEAD
-          child: ListView.separated(
-              itemBuilder: (context, index){
-                return UserTile();
-              },
-              separatorBuilder: (context, index){
-                return Divider();
-              },
-              itemCount: 5
-=======
           child: StreamBuilder<List>(
             stream: _userBloc.outUsers,
             builder: (context, snapshot) {
@@ -67,7 +52,6 @@ class UsersTab extends StatelessWidget {
                 );
               }
             }
->>>>>>> segunda commit
           ),
         )
       ],

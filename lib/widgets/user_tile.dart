@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-class UserTile extends StatelessWidget {
-=======
 import 'package:shimmer/shimmer.dart';
 
 class UserTile extends StatelessWidget {
@@ -11,40 +7,14 @@ class UserTile extends StatelessWidget {
 
   UserTile(this.user);
 
->>>>>>> segunda commit
   @override
   Widget build(BuildContext context) {
 
     final textStyle = TextStyle(color: Colors.white);
 
-<<<<<<< HEAD
-    return ListTile(
-      title: Text(
-        "title",
-        style: textStyle,
-      ),
-      subtitle: Text(
-        'subtitle',
-        style: textStyle,
-      ),
-      trailing: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          Text(
-            "Pedidos: 0",
-            style: textStyle,
-          ),
-          Text(
-            "Gasto: 0",
-            style: textStyle,
-          )
-        ],
-      ),
-    );
-=======
     if(user.containsKey("money")) {
       return ListTile(
-        title: Text(
+      title: Text(
           user["name"],
           style: textStyle,
         ),
@@ -100,6 +70,5 @@ class UserTile extends StatelessWidget {
         ),
       );
     }
->>>>>>> segunda commit
   }
 }
