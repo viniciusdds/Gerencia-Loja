@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "501430865230",
+    "firebase_url": "https://lojaflutter-d45c3.firebaseio.com",
+    "project_id": "lojaflutter-d45c3",
+    "storage_bucket": "lojaflutter-d45c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501430865230:android:5363844975e38f3187e21f",
+        "android_client_info": {
+          "package_name": "br.com.damasceno.gerente_loja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "501430865230-krqpevpl2bhurtq6j6u48du92qi7p2a7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQKGC3ejWq970w2vQRUeQT9OVy9dSWvvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "501430865230-krqpevpl2bhurtq6j6u48du92qi7p2a7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501430865230:android:2ce0cb678c5932f887e21f",
+        "android_client_info": {
+          "package_name": "br.com.damasceno.loja_virtual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "501430865230-krqpevpl2bhurtq6j6u48du92qi7p2a7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQKGC3ejWq970w2vQRUeQT9OVy9dSWvvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "501430865230-krqpevpl2bhurtq6j6u48du92qi7p2a7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
