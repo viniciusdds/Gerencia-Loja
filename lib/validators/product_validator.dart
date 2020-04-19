@@ -38,4 +38,12 @@ class ProductValidator{
     return null;
   }
 
+//  String validateSize(List text){
+//    if(text.isEmpty){
+//      return "Adicione um Tamanho";
+//    }else{
+//      return null;
+//    }
+//  }
+
 }
