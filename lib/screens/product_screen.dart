@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gerente_loja/blocs/product_bloc.dart';
 import 'package:gerente_loja/validators/product_validator.dart';
 import 'package:gerente_loja/widgets/images_widget.dart';
+import 'package:gerente_loja/widgets/product_sizes.dart';
 
 class ProductScreen extends StatefulWidget {
 
@@ -47,11 +48,36 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
       backgroundColor: Colors.grey[850],
       appBar: AppBar(
         elevation: 0,
-        title: Text("Criar Produto"),
+        title: StreamBuilder<bool>(
+          stream: _productBloc.outCreated,
+          initialData: false,
+          builder: (context, snapshot) {
+            return Text(snapshot.data ? "Editar Produto" : "Criar Produto");
+          }
+        ),
         actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.remove),
-              onPressed: (){}
+          StreamBuilder<bool>(
+            stream: _productBloc.outCreated,
+            initialData: false,
+            builder: (context, snapshot){
+              if(snapshot.data){
+                return StreamBuilder<bool>(
+                    stream: _productBloc.outLoading,
+                    initialData: false,
+                    builder: (context, snapshot) {
+                      return IconButton(
+                          icon: Icon(Icons.remove),
+                          onPressed:  snapshot.data ? null : (){
+                            _productBloc.deleteProduct();
+                            Navigator.of(context).pop();
+                          }
+                      );
+                    }
+                );
+              }else{
+                return Container();
+              }
+            },
           ),
           StreamBuilder<bool>(
             stream: _productBloc.outLoading,
@@ -113,6 +139,23 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                       keyboardType: TextInputType.numberWithOptions(decimal: true),
                       onSaved: _productBloc.savePrice,
                       validator: validatePrice,
+                    ),
+                    SizedBox(height: 16,),
+                    Text(
+                      "Tamanhos",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12
+                      ),
+                    ),
+                    ProductSizes(
+                      initialValue: snapshot.data["sizes"],
+                      onSaved: (s){
+
+                      },
+                      validator: (s){
+
+                      },
                     ),
                   ],
                 );
