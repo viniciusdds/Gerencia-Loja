@@ -37,6 +37,8 @@ class CategoryBloc extends BlocBase {
 
   CategoryBloc(this.category){
     if(category != null){
+      title = category.data["title"];
+
       _titleController.add(category.data["title"]);
       _imageController.add(category.data["icon"]);
       _deleteController.add(true);
@@ -53,6 +55,35 @@ class CategoryBloc extends BlocBase {
   void setTitle(String title){
     this.title = title;
     _titleController.add(title);
+  }
+
+  void delete(){
+    category.reference.delete();
+  }
+
+  Future saveData() async {
+    if(image == null && category != null && title == category.data["title"]){
+      return;
+    }
+
+    Map<String, dynamic> dataToUpdate = {};
+
+    if(image != null){
+      StorageUploadTask task = FirebaseStorage.instance.ref().child("icons").child(title).putFile(image);
+      StorageTaskSnapshot snap = await task.onComplete;
+      dataToUpdate["icon"] = await snap.ref.getDownloadURL();
+    }
+
+    if(category == null || title != category.data["title"]){
+      dataToUpdate["title"] = title;
+    }
+
+    if(category == null){
+      await Firestore.instance.collection("products").document(title.toLowerCase())
+          .setData(dataToUpdate);
+    }else{
+      await category.reference.updateData(dataToUpdate);
+    }
   }
 
   @override

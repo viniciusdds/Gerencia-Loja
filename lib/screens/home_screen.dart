@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:gerente_loja/blocs/orders_bloc.dart';
 import 'package:gerente_loja/blocs/user_bloc.dart';
+import 'package:gerente_loja/screens/login_screen.dart';
 import 'package:gerente_loja/tabs/orders_tab.dart';
 import 'package:gerente_loja/tabs/products_tab.dart';
 import 'package:gerente_loja/tabs/users_tab.dart';
@@ -104,7 +105,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildFloating(){
     switch(_page){
       case 0:
-        return null;
+        return FloatingActionButton(
+          child: Icon(Icons.exit_to_app),
+          backgroundColor: Colors.pinkAccent,
+          onPressed: (){
+            _userBloc.singOut();
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context)=>LoginScreen())
+            );
+          },
+        );
       case 1:
         return SpeedDial(
           child: Icon(Icons.sort),

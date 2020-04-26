@@ -1,10 +1,12 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserBloc extends BlocBase{
 
   final _usersController = BehaviorSubject<List>();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Stream<List> get outUsers => _usersController.stream;
 
@@ -82,6 +84,14 @@ class UserBloc extends BlocBase{
       _usersController.add(_users.values.toList());
 
     });
+  }
+
+  void singOut() async{
+    await _firebaseAuth.signOut();
+
+    _users = Map();
+
+    notifyListeners();
   }
 
   Map<String, dynamic> getUser(String uid){
